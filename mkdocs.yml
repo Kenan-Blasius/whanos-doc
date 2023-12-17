@@ -63,6 +63,8 @@ repo_url: https://github.com/EpitechPromo2026/B-DOP-500-MAR-5-1-whanos-kenan.bla
 nav:
 - Installation:
   - index.md
+- How to use:
+  - usage.md
 # - GameDesign:
 #   - R-Type: GameDesign/gameDesign.md
 # - GameEngine:
