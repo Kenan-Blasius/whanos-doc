@@ -387,6 +387,68 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vms-setup" class="md-nav__link">
+    VMs setup
+  </a>
+  
+    <nav class="md-nav" aria-label="VMs setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vms-requirements" class="md-nav__link">
+    VMs requirements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-the-vms" class="md-nav__link">
+    Create the VMs
+  </a>
+  
+    <nav class="md-nav" aria-label="Create the VMs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-vm-with-virtualbox" class="md-nav__link">
+    Creating a VM with VirtualBox
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-ubuntu-server" class="md-nav__link">
+    Installing Ubuntu server
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -404,6 +466,115 @@
 
 
 <h1 id="install">Install</h1>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>Git</li>
+<li>Ansible</li>
+<li>At least 3 VMs with the setup described in <a href="#vms-setup">VMs setup</a></li>
+</ul>
+<h2 id="vms-setup">VMs setup</h2>
+<p>For the setup I used VirtualBox but it should work with any other virtualization software until your VMs have the required configuration.</p>
+<h3 id="vms-requirements">VMs requirements</h3>
+<p>This requirement are the minimum requirements for the VMs. You can use more powerful VMs if you want.</p>
+<p>Jenkins VM:</p>
+<ul>
+<li>2 CPU</li>
+<li>2 GB RAM (2048 MB)</li>
+<li>30 GB disk</li>
+</ul>
+<p>Kubernetes VMs:</p>
+<ul>
+<li>4 CPU</li>
+<li>4 GB RAM (4096 MB)</li>
+<li>30 GB disk</li>
+</ul>
+<h3 id="create-the-vms">Create the VMs</h3>
+<p>Create 1 VM for Jenkins and at least 2 VMs for the Kubernetes cluster.</p>
+<h4 id="creating-a-vm-with-virtualbox">Creating a VM with VirtualBox</h4>
+<ul>
+<li>Open VirtualBox</li>
+<li>Click on "New"</li>
+<li>Name your VM</li>
+<li>Select your "ISO Image" (Ubuntu server 22.04.3 LTS in my case)</li>
+</ul>
+<p><img alt="image" src="images/VMSetupPartOne.png" /></p>
+<ul>
+<li>Click on "Next"</li>
+<li>Set the memory size and CPU number according to <a href="#vms-requirements">VMs requirements</a></li>
+</ul>
+<p><img alt="image" src="images/VMSetupPartTwo.png" /></p>
+<ul>
+<li>Click on "Next"</li>
+<li>Select "Create a virtual hard disk now"</li>
+<li>Set the disk size according to <a href="#vms-requirements">VMs requirements</a></li>
+</ul>
+<p><img alt="image" src="images/VMSetupPartThree.png" /></p>
+<ul>
+<li>Click on "Next"</li>
+<li>Then click on "Finish"</li>
+</ul>
+<h4 id="installing-ubuntu-server">Installing Ubuntu server</h4>
+<ul>
+<li>Start your VM</li>
+<li>Select your language</li>
+</ul>
+<p><img alt="image" src="images/OSSelectLanguage.png" /></p>
+<ul>
+<li>Select "Continue without updating"</li>
+<li>Then select "Done" until you reach the "Configure Ubuntu archive Mirror" screen</li>
+</ul>
+<p><img alt="image" src="images/OSConfigureUbuntuArchiveMirror.png" /></p>
+<ul>
+<li>Wait to see if the mirror location pass the test</li>
+<li>If the test pass, select "Done", otherwise you may have an issue with your internet connection</li>
+<li>Select "Done" until you reach the "Storage configuration" screen</li>
+<li>Select "Done" and then "Continue" on the "Confirm destructive action" screen</li>
+</ul>
+<p>You should now be on the "Profile setup" screen.</p>
+<ul>
+<li>Enter your name</li>
+<li>Enter your server name</li>
+<li>Enter your username (For all Kubernetes VMs, use the same username)</li>
+<li>Enter your password (For all Kubernetes VMs, use the same password)</li>
+</ul>
+<p><img alt="image" src="images/OSProfileSetup.png" /></p>
+<ul>
+<li>Select "Done"</li>
+<li>Select "Continue" (We don't need Ubuntu Pro)</li>
+<li>Check "Install OpenSSH server"</li>
+</ul>
+<p><img alt="image" src="images/OSInstallOpenSSHServer.png" /></p>
+<ul>
+<li>Select "Done"</li>
+</ul>
+<p>You should now be on the "Featured server snaps" screen.
+Check nothing and select "Done".</p>
+<p><img alt="image" src="images/OSFeaturedServerSnaps.png" /></p>
+<p>Now wait for the installation to finish.</p>
+<ul>
+<li>Select "Reboot now" and then "Done"</li>
+</ul>
+<p><img alt="image" src="images/OSRebootNow.png" /></p>
+<ul>
+<li>Wait for the VM to reboot</li>
+<li>Login with your username and password</li>
+<li>
+<p>Run <code>shutdown -h now</code> to shutdown the VM</p>
+</li>
+<li>
+<p>Now go to the VM settings</p>
+</li>
+<li>Go to "Network"</li>
+<li>And change the "Attached to" to "Bridged Adapter"</li>
+</ul>
+<p><img alt="image" src="images/VMSetupNetwork.png" /></p>
+<ul>
+<li>Start the VM</li>
+<li>Login with your username and password</li>
+<li>Run <code>ip -c a</code> to get the IP address of your VM</li>
+</ul>
+<p><img alt="image" src="images/OSGetIp.png" /></p>
+<p>Now repeat the same steps for the other VMs.</p>
 
 
 
