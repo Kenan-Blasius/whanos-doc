@@ -722,6 +722,14 @@
 <p>Run this script with the IP addresses of your Kubernetes VMs as arguments (not the Jenkins VM, you will be prompted for it later).</p>
 <div class="highlight"><pre><span></span><code>./deployAll.sh<span class="w"> </span>&lt;kubernetes-vm-ip-1&gt;<span class="w"> </span>&lt;kubernetes-vm-ip-2&gt;<span class="w"> </span>...<span class="w"> </span>&lt;kubernetes-vm-ip-n&gt;
 </code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Prevent your host machine from going to sleep during the setup. Otherwise the setup may fail.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The script will prompt you for more information concerning the setup of Jenkins. So check your terminal regularly.</p>
+</div>
 <p>This script will run two sub-scripts:</p>
 <ul>
 <li><code>deployKubespray.sh</code> wich will setup Kubernetes on the Kubernetes VMs</li>
