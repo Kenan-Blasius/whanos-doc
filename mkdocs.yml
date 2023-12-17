@@ -1,4 +1,4 @@
-site_name: Tainted R-Type
+site_name: Whanos-Documentation
 
 theme:
   name: material
@@ -57,22 +57,22 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
 
 
-repo_name: epitech-2026/Tainted-R-Type
-repo_url: https://github.com/EpitechPromo2026/B-CPP-500-MAR-5-1-rtype-theo.liennard
+repo_name: epitech-2026/Whanos
+repo_url: https://github.com/EpitechPromo2026/B-DOP-500-MAR-5-1-whanos-kenan.blasius
 
 nav:
 - Installation:
   - index.md
-- GameDesign:
-  - R-Type: GameDesign/gameDesign.md
-- GameEngine:
-  - Getting started: GameEngine/gameEngine.md
-  - ECS: GameEngine/ecs.md
-  - Network: GameEngine/network.md
-  - Time: GameEngine/time.md
-  - Lua: GameEngine/lua.md
-  - Json: GameEngine/json.md
-  - Asset: GameEngine/asset.md
-- Network:
-  - Getting started: Network/network.md
-  - Protocol: Network/protocol.md
+# - GameDesign:
+#   - R-Type: GameDesign/gameDesign.md
+# - GameEngine:
+#   - Getting started: GameEngine/gameEngine.md
+#   - ECS: GameEngine/ecs.md
+#   - Network: GameEngine/network.md
+#   - Time: GameEngine/time.md
+#   - Lua: GameEngine/lua.md
+#   - Json: GameEngine/json.md
+#   - Asset: GameEngine/asset.md
+# - Network:
+#   - Getting started: Network/network.md
+#   - Protocol: Network/protocol.md
