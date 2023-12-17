@@ -88,9 +88,10 @@ You should now be on the "Profile setup" screen.
 - Select "Done"
 
 You should now be on the "Featured server snaps" screen.
+
 Check nothing and select "Done".
 
-![image](images/OSFeaturedServerSnaps.png)
+<!-- ![image](images/OSFeaturedServerSnaps.png) -->
 
 Now wait for the installation to finish.
 
