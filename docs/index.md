@@ -36,6 +36,7 @@ Create 1 VM for Jenkins and at least 2 VMs for the Kubernetes cluster.
 - Click on "New"
 - Name your VM
 - Select your "ISO Image" (Ubuntu server 22.04.3 LTS in my case)
+- Check "Skip unattended installation"
 
 ![image](images/VMSetupPartOne.png)
 
@@ -95,13 +96,13 @@ Check nothing and select "Done".
 
 Now wait for the installation to finish.
 
-- Select "Reboot now" and then "Done"
+- Select "Reboot now"
 
 ![image](images/OSRebootNow.png)
 
 - Wait for the VM to reboot
 - Login with your username and password
-- Run `shutdown -h now` to shutdown the VM
+- Run `shutdown -h now` to shutdown the VM correctly
 
 - Now go to the VM settings
 - Go to "Network"
@@ -116,3 +117,15 @@ Now wait for the installation to finish.
 ![image](images/OSGetIp.png)
 
 Now repeat the same steps for the other VMs.
+
+## Setup the VMs
+
+Now clone the repository on your host machine.
+
+At the root of the repository, you should have a `deployAll.sh` script.
+
+Run this script with the IP addresses of your Kubernetes VMs as arguments (not the Jenkins VM, you will be prompted for it later).
+
+```bash
+./deployAll.sh <kubernetes-vm-ip-1> <kubernetes-vm-ip-2> ... <kubernetes-vm-ip-n>
+```
