@@ -5,13 +5,13 @@
 - Go to the Jenkins VM IP address in your browser on port 8080
 - The username is `admin` and the password is the one you entered during the VM setup
 
-![image](images/JenkinsLogin.png)
+![image](../images/JenkinsLogin.png)
 
 - You can now see all the jobs
 - In the "Whanos Base Image" folder you can find the job to build the base image (see [Whanos Images](#whanos-images))
 - In the "Projects" folder you can find the jobs to build the projects created with the "link-project" job (see [Link Project](#link-project))
 
-![image](images/JenkinsHome.png)
+![image](../images/JenkinsHome.png)
 
 ## Whanos Images
 
