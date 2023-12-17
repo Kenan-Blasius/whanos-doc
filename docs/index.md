@@ -129,3 +129,47 @@ Run this script with the IP addresses of your Kubernetes VMs as arguments (not t
 ```bash
 ./deployAll.sh <kubernetes-vm-ip-1> <kubernetes-vm-ip-2> ... <kubernetes-vm-ip-n>
 ```
+
+This script will run two sub-scripts:
+
+- `deployKubespray.sh` wich will setup Kubernetes on the Kubernetes VMs
+- `deployJenkins.sh` wich will setup Jenkins on the Jenkins VM
+
+The `deployKubespray.sh` script will clone the kubespray repository and run the `reset.yml` (to clear any previous install of kubernetes) then run the `cluster.yml` (to install kubernetes) playbook with the IP addresses of the Kubernetes VMs as arguments.
+
+The `deployJenkins.sh` script will prompt you for all needed information to setup Jenkins and then use the `jenkins.yml` playbook to install Jenkins on the VM.
+
+Once `deployAll.sh` is finished, all the VMs should be ready to use.
+
+If you want to reinstall Jenkins, you can run the `deployJenkins.sh` script again.
+
+!!! warning
+    If you want to reinstall Kubernetes, you will have to run the `deployAll.sh` script since Jenkins needs a file from kubernetes to connect to the kubernetes cluster.
+
+# How to use
+
+## Jenkins
+
+- Go to the Jenkins VM IP address in your browser on port 8080
+- The username is `admin` and the password is the one you entered during the VM setup
+
+![image](images/JenkinsLogin.png)
+
+- You can now see all the jobs
+- In the "Whanos Base Image" folder you can find the job to build the base image
+- In the "Projects" folder you can find the jobs to build the projects created with the "link-project" job
+
+![image](images/JenkinsHome.png)
+
+## Kubernetes
+
+- Once the Jenkins jobs are finished, you can connect to one of the Kubernetes VMs
+- Run `sudo kubectl get svc` to find the port on which the application is listening
+- Run `sudo kubectl get pods -l app=YOURAPPNAME -o=jsonpath='{range .items[*]}{.status.hostIP}{"\n"}{end}'` to get the IP address of the VM on which the application is running (replace YOURAPPNAME with the name of your application)
+
+![image](images/KubernetesGetPods.png)
+
+- Go to the IP address of the VM on which the application is running on the port you found earlier
+- You should see your application
+
+![image](images/KubernetesApp.png)
