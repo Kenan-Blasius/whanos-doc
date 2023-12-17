@@ -4,6 +4,7 @@
 
 - Git
 - Ansible
+- A Docker Hub account
 - At least 3 VMs with the setup described in [VMs setup](#vms-setup)
 
 ## VMs setup
