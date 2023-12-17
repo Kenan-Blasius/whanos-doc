@@ -658,13 +658,13 @@
 <li>Go to the Jenkins VM IP address in your browser on port 8080</li>
 <li>The username is <code>admin</code> and the password is the one you entered during the VM setup</li>
 </ul>
-<p><img alt="image" src="images/JenkinsLogin.png" /></p>
+<p><img alt="image" src="../../images/JenkinsLogin.png" /></p>
 <ul>
 <li>You can now see all the jobs</li>
 <li>In the "Whanos Base Image" folder you can find the job to build the base image (see <a href="#whanos-images">Whanos Images</a>)</li>
 <li>In the "Projects" folder you can find the jobs to build the projects created with the "link-project" job (see <a href="#link-project">Link Project</a>)</li>
 </ul>
-<p><img alt="image" src="images/JenkinsHome.png" /></p>
+<p><img alt="image" src="../../images/JenkinsHome.png" /></p>
 <h2 id="whanos-images">Whanos Images</h2>
 <p>Jenkins is linked to a docker registry (Docker Hub).
 When building the whanos base images (<code>whanos-&lt;language&gt;</code>), Jenkins will trigger a <code>docker build</code> command
