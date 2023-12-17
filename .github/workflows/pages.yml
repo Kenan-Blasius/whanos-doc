@@ -16,4 +16,9 @@ jobs:
           pip install -r requirements.txt
       - name: Build Site
         run: |
-          mkdocs gh-deploy --config-file mkdocs.yml --force
+          mkdocs build
+      - name: Deploy Site
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.PERSONAL_TOKEN }}
+          publish_dir: ./site
