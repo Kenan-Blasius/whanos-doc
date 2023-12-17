@@ -590,6 +590,44 @@
 <p>Run this script with the IP addresses of your Kubernetes VMs as arguments (not the Jenkins VM, you will be prompted for it later).</p>
 <div class="highlight"><pre><span></span><code>./deployAll.sh<span class="w"> </span>&lt;kubernetes-vm-ip-1&gt;<span class="w"> </span>&lt;kubernetes-vm-ip-2&gt;<span class="w"> </span>...<span class="w"> </span>&lt;kubernetes-vm-ip-n&gt;
 </code></pre></div>
+<p>This script will run two sub-scripts:</p>
+<ul>
+<li><code>deployKubespray.sh</code> wich will setup Kubernetes on the Kubernetes VMs</li>
+<li><code>deployJenkins.sh</code> wich will setup Jenkins on the Jenkins VM</li>
+</ul>
+<p>The <code>deployKubespray.sh</code> script will clone the kubespray repository and run the <code>reset.yml</code> (to clear any previous install of kubernetes) then run the <code>cluster.yml</code> (to install kubernetes) playbook with the IP addresses of the Kubernetes VMs as arguments.</p>
+<p>The <code>deployJenkins.sh</code> script will prompt you for all needed information to setup Jenkins and then use the <code>jenkins.yml</code> playbook to install Jenkins on the VM.</p>
+<p>Once <code>deployAll.sh</code> is finished, all the VMs should be ready to use.</p>
+<p>If you want to reinstall Jenkins, you can run the <code>deployJenkins.sh</code> script again.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you want to reinstall Kubernetes, you will have to run the <code>deployAll.sh</code> script since Jenkins needs a file from kubernetes to connect to the kubernetes cluster.</p>
+</div>
+<h1 id="how-to-use">How to use</h1>
+<h2 id="jenkins">Jenkins</h2>
+<ul>
+<li>Go to the Jenkins VM IP address in your browser on port 8080</li>
+<li>The username is <code>admin</code> and the password is the one you entered during the VM setup</li>
+</ul>
+<p><img alt="image" src="images/JenkinsLogin.png" /></p>
+<ul>
+<li>You can now see all the jobs</li>
+<li>In the "Whanos Base Image" folder you can find the job to build the base image</li>
+<li>In the "Projects" folder you can find the jobs to build the projects created with the "link-project" job</li>
+</ul>
+<p><img alt="image" src="images/JenkinsHome.png" /></p>
+<h2 id="kubernetes">Kubernetes</h2>
+<ul>
+<li>Once the Jenkins jobs are finished, you can connect to one of the Kubernetes VMs</li>
+<li>Run <code>sudo kubectl get svc</code> to find the port on which the application is listening</li>
+<li>Run <code>sudo kubectl get pods -l app=YOURAPPNAME -o=jsonpath='{range .items[*]}{.status.hostIP}{"\n"}{end}'</code> to get the IP address of the VM on which the application is running (replace YOURAPPNAME with the name of your application)</li>
+</ul>
+<p><img alt="image" src="images/KubernetesGetPods.png" /></p>
+<ul>
+<li>Go to the IP address of the VM on which the application is running on the port you found earlier</li>
+<li>You should see your application</li>
+</ul>
+<p><img alt="image" src="images/KubernetesApp.png" /></p>
 
 
 
