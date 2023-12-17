@@ -65,16 +65,5 @@ nav:
   - index.md
 - How to use:
   - usage.md
-# - GameDesign:
-#   - R-Type: GameDesign/gameDesign.md
-# - GameEngine:
-#   - Getting started: GameEngine/gameEngine.md
-#   - ECS: GameEngine/ecs.md
-#   - Network: GameEngine/network.md
-#   - Time: GameEngine/time.md
-#   - Lua: GameEngine/lua.md
-#   - Json: GameEngine/json.md
-#   - Asset: GameEngine/asset.md
-# - Network:
-#   - Getting started: Network/network.md
-#   - Protocol: Network/protocol.md
+  - Jenkins: usage/jenkins.md
+  - Kubernetes: usage/kubernetes.md
