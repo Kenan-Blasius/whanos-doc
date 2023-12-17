@@ -447,6 +447,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#setup-the-vms" class="md-nav__link">
+    Setup the VMs
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -496,6 +503,7 @@
 <li>Click on "New"</li>
 <li>Name your VM</li>
 <li>Select your "ISO Image" (Ubuntu server 22.04.3 LTS in my case)</li>
+<li>Check "Skip unattended installation"</li>
 </ul>
 <p><img alt="image" src="images/VMSetupPartOne.png" /></p>
 <ul>
@@ -553,14 +561,14 @@
 
 <p>Now wait for the installation to finish.</p>
 <ul>
-<li>Select "Reboot now" and then "Done"</li>
+<li>Select "Reboot now"</li>
 </ul>
 <p><img alt="image" src="images/OSRebootNow.png" /></p>
 <ul>
 <li>Wait for the VM to reboot</li>
 <li>Login with your username and password</li>
 <li>
-<p>Run <code>shutdown -h now</code> to shutdown the VM</p>
+<p>Run <code>shutdown -h now</code> to shutdown the VM correctly</p>
 </li>
 <li>
 <p>Now go to the VM settings</p>
@@ -576,6 +584,12 @@
 </ul>
 <p><img alt="image" src="images/OSGetIp.png" /></p>
 <p>Now repeat the same steps for the other VMs.</p>
+<h2 id="setup-the-vms">Setup the VMs</h2>
+<p>Now clone the repository on your host machine.</p>
+<p>At the root of the repository, you should have a <code>deployAll.sh</code> script.</p>
+<p>Run this script with the IP addresses of your Kubernetes VMs as arguments (not the Jenkins VM, you will be prompted for it later).</p>
+<div class="highlight"><pre><span></span><code>./deployAll.sh<span class="w"> </span>&lt;kubernetes-vm-ip-1&gt;<span class="w"> </span>&lt;kubernetes-vm-ip-2&gt;<span class="w"> </span>...<span class="w"> </span>&lt;kubernetes-vm-ip-n&gt;
+</code></pre></div>
 
 
 
