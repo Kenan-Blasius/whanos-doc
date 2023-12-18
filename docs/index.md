@@ -2,6 +2,7 @@
 
 ## Requirements
 
+- Python3
 - Git
 - Ansible
 - A Docker Hub account
